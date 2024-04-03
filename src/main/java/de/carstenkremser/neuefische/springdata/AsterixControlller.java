@@ -42,4 +42,24 @@ public class AsterixControlller {
                 .findCharacterById(id)
                 .ifPresent(characterRepo::delete);
     }
+
+    @GetMapping("/byName/{name}")
+    List<Character> getByName(@PathVariable String name) {
+        return characterRepo.findAllByName(name);
+    }
+    @GetMapping("/byProfession/{profession}")
+    List<Character> getByProfession(@PathVariable String profession) {
+        return characterRepo.findAllByProfession(profession);
+    }
+    @GetMapping("/olderThan/{age}")
+    List<Character> getOlderThan(@PathVariable int age) {
+        return characterRepo.findAllByAgeGreaterThan(age);
+    }
+
+    @GetMapping("/youngerThan/{age}")
+    List<Character> getYoungerThan(@PathVariable int age) {
+        return characterRepo.findAllByAgeLessThan(age);
+    }
+
+
 }
