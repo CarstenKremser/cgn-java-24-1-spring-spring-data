@@ -62,22 +62,13 @@ public class CharacterController {
     }
 
     @GetMapping("/averageAgeOfProfession/{profession}")
-    int getAverageAgeOfProfession(@PathVariable String profession) {
-        List<Character> characters = characterRepo.findAllByProfession(profession);
-        int ageSum = characters
+    double getAverageAgeOfProfession(@PathVariable String profession) {
+        return characterRepo
+                .findAllByProfession(profession)
                 .stream()
                 .filter(character -> character.age() > 0)
-                .mapToInt(character -> character.age())
-                .sum();
-        int ageCount = (int)characters
-                .stream()
-                .filter(character -> character.age() > 0)
-                .count();
-        if (ageCount > 0) {
-            return ageSum/ageCount;
-        }
-        return 0;
+                .mapToDouble(character -> character.age())
+                .average()
+                .orElse(0);
     }
-
-
 }
