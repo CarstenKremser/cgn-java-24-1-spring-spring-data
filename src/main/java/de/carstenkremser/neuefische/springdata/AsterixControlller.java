@@ -61,5 +61,23 @@ public class AsterixControlller {
         return characterRepo.findAllByAgeLessThan(age);
     }
 
+    @GetMapping("/averageAgeOfProfession/{profession}")
+    int getAverageAgeOfProfession(@PathVariable String profession) {
+        List<Character> characters = characterRepo.findAllByProfession(profession);
+        int ageSum = characters
+                .stream()
+                .filter(character -> character.age() > 0)
+                .mapToInt(character -> character.age())
+                .sum();
+        int ageCount = (int)characters
+                .stream()
+                .filter(character -> character.age() > 0)
+                .count();
+        if (ageCount > 0) {
+            return ageSum/ageCount;
+        }
+        return 0;
+    }
+
 
 }
