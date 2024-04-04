@@ -8,7 +8,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/asterix/characters")
 @RequiredArgsConstructor
-public class AsterixControlller {
+public class CharacterController {
 
     private final CharacterRepo characterRepo;
 
