@@ -2,6 +2,7 @@ package de.carstenkremser.neuefische.asterix.controller;
 
 import de.carstenkremser.neuefische.asterix.model.Character;
 import de.carstenkremser.neuefische.asterix.repo.CharacterRepo;
+import de.carstenkremser.neuefische.asterix.service.CharacterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,67 +13,54 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CharacterController {
 
-    private final CharacterRepo characterRepo;
-
+    private final CharacterService characterService;
     @GetMapping
     List<Character> getAll() {
-        return characterRepo.findAll();
+        return characterService.getAll();
     }
 
     @PostMapping
     void saveNewCharacter(@RequestBody Character character) {
-        characterRepo.save(character);
+        characterService.saveNewCharacter(character);
     }
 
     @PutMapping("/updateName/{id}/{name}")
     void updateName(@PathVariable String id, @PathVariable String name) {
-        characterRepo
-                .findCharacterById(id)
-                .ifPresent(character -> characterRepo.save(character.withName(name)));
+        characterService.updateName(id, name);
     }
 
     @PutMapping("/updateProfession/{id}/{profession}")
     void updateProfession(@PathVariable String id, @PathVariable String profession) {
-        characterRepo
-                .findCharacterById(id)
-                .ifPresent(character -> characterRepo.save(character.withProfession(profession)));
+        characterService.updateProfession(id, profession);
     }
 
     @DeleteMapping("/delete/{id}")
     void delete(@PathVariable String id) {
-        characterRepo
-                .findCharacterById(id)
-                .ifPresent(characterRepo::delete);
+        characterService.delete(id);
     }
 
     @GetMapping("/byName/{name}")
     List<Character> getByName(@PathVariable String name) {
-        return characterRepo.findAllByName(name);
+        return characterService.getByName(name);
     }
 
     @GetMapping("/byProfession/{profession}")
     List<Character> getByProfession(@PathVariable String profession) {
-        return characterRepo.findAllByProfession(profession);
+        return characterService.getByProfession(profession);
     }
 
     @GetMapping("/olderThan/{age}")
     List<Character> getOlderThan(@PathVariable int age) {
-        return characterRepo.findAllByAgeGreaterThan(age);
+        return characterService.getOlderThan(age);
     }
 
     @GetMapping("/youngerThan/{age}")
     List<Character> getYoungerThan(@PathVariable int age) {
-        return characterRepo.findAllByAgeLessThan(age);
+        return characterService.getYoungerThan(age);
     }
 
     @GetMapping("/averageAgeOfProfession/{profession}")
     double getAverageAgeOfProfession(@PathVariable String profession) {
-        return characterRepo
-                .findAllByProfession(profession)
-                .stream()
-                .filter(character -> character.age() > 0)
-                .mapToDouble(character -> character.age())
-                .average()
-                .orElse(0);
+        return characterService.getAverageAgeOfProfession(profession);
     }
 }
