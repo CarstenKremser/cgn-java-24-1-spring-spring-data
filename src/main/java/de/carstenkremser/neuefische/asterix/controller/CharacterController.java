@@ -1,7 +1,6 @@
 package de.carstenkremser.neuefische.asterix.controller;
 
 import de.carstenkremser.neuefische.asterix.model.Character;
-import de.carstenkremser.neuefische.asterix.repo.CharacterRepo;
 import de.carstenkremser.neuefische.asterix.service.CharacterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
