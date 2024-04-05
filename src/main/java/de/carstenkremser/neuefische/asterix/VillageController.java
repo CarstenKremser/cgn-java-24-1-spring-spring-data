@@ -1,4 +1,4 @@
-package de.carstenkremser.neuefische.springdata;
+package de.carstenkremser.neuefische.asterix;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/asterix/weapons")
+@RequestMapping("/asterix/villages")
 @RequiredArgsConstructor
-public class WeaponController {
+public class VillageController {
 
-    private final WeaponRepo weaponRepo;
+    private final VillageRepo villageRepo;
 
     @GetMapping
-    List<Weapon> getAll() {
-        return weaponRepo.findAll();
+    List<Village> getAll() {
+        return villageRepo.findAll();
     }
- }
+}

@@ -1,4 +1,4 @@
-package de.carstenkremser.neuefische.springdata;
+package de.carstenkremser.neuefische.asterix;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

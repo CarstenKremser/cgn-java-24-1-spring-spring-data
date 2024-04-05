@@ -1,4 +1,4 @@
-package de.carstenkremser.neuefische.springdata;
+package de.carstenkremser.neuefische.asterix;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

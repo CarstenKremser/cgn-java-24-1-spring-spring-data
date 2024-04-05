@@ -1,4 +1,4 @@
-package de.carstenkremser.neuefische.springdata;
+package de.carstenkremser.neuefische.asterix;
 
 import lombok.With;
 import org.springframework.data.mongodb.core.mapping.Document;

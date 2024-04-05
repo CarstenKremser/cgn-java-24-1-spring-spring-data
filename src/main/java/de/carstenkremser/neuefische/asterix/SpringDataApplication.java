@@ -1,4 +1,4 @@
-package de.carstenkremser.neuefische.springdata;
+package de.carstenkremser.neuefische.asterix;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
