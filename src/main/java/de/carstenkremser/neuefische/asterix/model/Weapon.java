@@ -1,4 +1,4 @@
-package de.carstenkremser.neuefische.asterix;
+package de.carstenkremser.neuefische.asterix.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 

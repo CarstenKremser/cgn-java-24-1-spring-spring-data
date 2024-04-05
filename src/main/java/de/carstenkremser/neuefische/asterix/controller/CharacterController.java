@@ -1,5 +1,7 @@
-package de.carstenkremser.neuefische.asterix;
+package de.carstenkremser.neuefische.asterix.controller;
 
+import de.carstenkremser.neuefische.asterix.model.Character;
+import de.carstenkremser.neuefische.asterix.repo.CharacterRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
