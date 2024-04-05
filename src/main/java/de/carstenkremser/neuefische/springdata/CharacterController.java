@@ -47,10 +47,12 @@ public class CharacterController {
     List<Character> getByName(@PathVariable String name) {
         return characterRepo.findAllByName(name);
     }
+
     @GetMapping("/byProfession/{profession}")
     List<Character> getByProfession(@PathVariable String profession) {
         return characterRepo.findAllByProfession(profession);
     }
+
     @GetMapping("/olderThan/{age}")
     List<Character> getOlderThan(@PathVariable int age) {
         return characterRepo.findAllByAgeGreaterThan(age);
