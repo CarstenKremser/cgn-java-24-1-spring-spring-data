@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,10 @@ public class CharacterService {
 
     public List<Character> getAll() {
         return characterRepo.findAll();
+    }
+
+    public Optional<Character> getById(String id) {
+        return characterRepo.findById(id);
     }
 
     public List<Character> getByName(String name) {

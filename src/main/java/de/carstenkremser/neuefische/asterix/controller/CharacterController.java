@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/asterix/characters")
@@ -16,6 +17,11 @@ public class CharacterController {
     @GetMapping
     List<Character> getAll() {
         return characterService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    Optional<Character> getCharacterById(@PathVariable String id) {
+        return characterService.getById(id);
     }
 
     @PostMapping
